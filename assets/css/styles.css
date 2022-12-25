@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+#sidebar {
+  min-width: 270px;
+  max-width: 270px;
+}
+#main {
+  min-height: 100vh;
+}
+.container-sidebar {
+  position: sticky;
+  top: 0;
+}
+
