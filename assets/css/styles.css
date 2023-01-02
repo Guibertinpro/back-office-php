@@ -1,12 +1,17 @@
 * {
   box-sizing: border-box;
 }
+a{
+  color: initial !important;
+  text-decoration: none !important;
+}
 #sidebar {
   min-width: 270px;
   max-width: 270px;
 }
 #main {
   min-height: 100vh;
+  position: relative;
 }
 .container-sidebar {
   position: sticky;

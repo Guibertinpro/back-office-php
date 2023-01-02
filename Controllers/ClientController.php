@@ -16,7 +16,7 @@ class ClientController extends BaseController
 
   public function update(Client $client)
   {
-    $req = $this->pdo->prepare("UPDATE `client` SET firstname = :firstname, lastname = :lastnaùe, email = :email, address = :address, postcode = :postcode, city = :city, phone = :phone WHERE id = :id");
+    $req = $this->pdo->prepare("UPDATE `client` SET firstname = :firstname, lastname = :lastname, email = :email, address = :address, postcode = :postcode, city = :city, phone = :phone WHERE id = :id");
     $req->bindValue('id', $client->getId(), PDO::PARAM_INT);
     $req->bindValue('firstname', $client->getFirstname(), PDO::PARAM_STR);
     $req->bindValue('lastname', $client->getLastname(), PDO::PARAM_STR);

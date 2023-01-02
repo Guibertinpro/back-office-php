@@ -6,34 +6,28 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-          Home
-        </a>
-      </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="/" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-          Dashboard
+          Tableau de bord
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="/commandes.php" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-          Orders
+          Commandes
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="/clients.php" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-          Products
+          Clients
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="/produits.php" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-          Customers
+          Produits
         </a>
       </li>
     </ul>
