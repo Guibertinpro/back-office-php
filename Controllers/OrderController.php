@@ -3,28 +3,17 @@ class OrderController extends BaseController
 {
   public function create(Order $order)
   {
-    $req = $this->pdo->prepare('INSERT INTO `order` (firstname, lastname, email, address, postcode, city, phone) VALUES (:firstname, :lastname, :email, :address, :postcode, :city, :phone)');
-    $req->bindValue('firstname', $order->getFirstname(), PDO::PARAM_STR);
-    $req->bindValue('lastname', $order->getLastname(), PDO::PARAM_STR);
-    $req->bindValue('email', $order->getEmail(), PDO::PARAM_STR);
-    $req->bindValue('address', $order->getAddress(), PDO::PARAM_STR);
-    $req->bindValue('postcode', $order->getPostcode(), PDO::PARAM_STR);
-    $req->bindValue('city', $order->getCity(), PDO::PARAM_STR);
-    $req->bindValue('phone', $order->getPhone(), PDO::PARAM_INT);
+    $req = $this->pdo->prepare('INSERT INTO `order` (amount, client_id) VALUES (:amount, :client_id)');
+    $req->bindValue('amount', $order->getAmount(), PDO::PARAM_STR);
+    $req->bindValue('client_id', $order->getClient_id(), PDO::PARAM_STR);
     $req->execute();
   }
 
   public function update(order $order)
   {
-    $req = $this->pdo->prepare("UPDATE `order` SET firstname = :firstname, lastname = :lastnaùe, email = :email, address = :address, postcode = :postcode, city = :city, phone = :phone WHERE id = :id");
-    $req->bindValue('id', $order->getId(), PDO::PARAM_INT);
-    $req->bindValue('firstname', $order->getFirstname(), PDO::PARAM_STR);
-    $req->bindValue('lastname', $order->getLastname(), PDO::PARAM_STR);
-    $req->bindValue('email', $order->getEmail(), PDO::PARAM_STR);
-    $req->bindValue('address', $order->getAddress(), PDO::PARAM_STR);
-    $req->bindValue('postcode', $order->getPostcode(), PDO::PARAM_STR);
-    $req->bindValue('city', $order->getCity(), PDO::PARAM_STR);
-    $req->bindValue('phone', $order->getPhone(), PDO::PARAM_INT);
+    $req = $this->pdo->prepare("UPDATE `order` SET amount = :amount, client_id = :client_id WHERE id = :id");
+    $req->bindValue('amount', $order->getAmount(), PDO::PARAM_STR);
+    $req->bindValue('client_id', $order->getClient_id(), PDO::PARAM_STR);
     $req->execute();
   }
 
@@ -52,5 +41,39 @@ class OrderController extends BaseController
     }
 
     return $orders;
+  }
+
+  public function getNumberOfOrdersByClientId(int $id)
+  {
+    $req = $this->pdo->query("SELECT count(*) FROM `order` WHERE client_id = $id");
+    $req->bindValue('id', $id, PDO::PARAM_INT);
+    $data = $req->fetch();
+
+    return $data;
+  }
+
+  public function getTotalSpentByClientId(int $id)
+  {
+    $req = $this->pdo->query("SELECT sum(amount) FROM `order` WHERE client_id = $id");
+    $req->bindValue('id', $id, PDO::PARAM_INT);
+    $data = $req->fetch();
+
+    return $data;
+  }
+
+  public function getTotalNbOrders()
+  {
+    $req = $this->pdo->query("SELECT count(*) FROM `order`");
+    $data = $req->fetch();
+
+    return $data;
+  }
+
+  public function getTotalOrders()
+  {
+    $req = $this->pdo->query("SELECT sum(amount) FROM `order`");
+    $data = $req->fetch();
+
+    return $data;
   }
 }

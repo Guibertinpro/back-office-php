@@ -52,5 +52,14 @@ class ClientController extends BaseController
     }
 
     return $clients;
+  }  
+
+  public function getTotalNbClients()
+  {
+    $req = $this->pdo->query("SELECT count(*) FROM `client`");
+    $data = $req->fetch();
+
+    return $data;
   }
+
 }
