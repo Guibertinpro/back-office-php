@@ -15,12 +15,14 @@
       <?php
         foreach ($clients as $client) {
       ?>
-  
+        <p></p>
         <div class="card m-2" style="width: 18rem;">
-          <div class="card-body d-flex align-items-center">
-            <i class="far fa-user me-2"></i>
-            <p class="card-title m-0 fw-bold"><?= $client->getFirstname() ?> <?= $client->getLastname() ?></p>
-          </div>
+          <a href="client.php?id=<?= $client->getId() ?>" class="h-100">
+            <div class="card-body d-flex align-items-center">
+              <i class="far fa-user me-2"></i>
+              <p class="card-title m-0 fw-bold"><?= $client->getFirstname() ?> <?= $client->getLastname() ?></p>
+            </div>
+          </a>
         </div>
   
       <?php } ?>

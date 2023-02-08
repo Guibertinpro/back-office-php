@@ -2,6 +2,7 @@
 
   $orderController = new OrderController;
   $orders = $orderController->getAll();
+ 
 
 ?>
 
@@ -14,12 +15,15 @@
     <div class="d-flex flex-wrap">
       <?php
         foreach ($orders as $order) {
+          $clientController = new ClientController;
+          $client = $clientController->getById($order->getClient_id());
       ?>
   
         <div class="card m-2" style="width: 18rem;">
           <div class="card-body">
             <p class="card-title m-0">Commande numéro : <?= $order->getId() ?></p>
             <p class="card-title m-0">Montant : <?= $order->getAmount() ?> €</p>
+            <p class="card-title m-0 fw-bold">Client : <?= $client->getFirstname() ?> <?= $client->getLastname() ?></p>
           </div>
         </div>
   
